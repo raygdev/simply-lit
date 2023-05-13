@@ -1,0 +1,28 @@
+{
+  "name": "simply-lit-server",
+  "version": "1.0.0",
+  "description": "a backend service for simply lit",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raygdev/simply-lit.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raygdev/simply-lit/issues"
+  },
+  "homepage": "https://github.com/raygdev/simply-lit#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0",
+    "mongoose": "^7.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
