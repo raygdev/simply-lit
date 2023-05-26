@@ -18,4 +18,5 @@ const letterSchema = new Schema({
 
 })
 
-module.exports = mongoose.model('Letter', letterSchema)
+const Letters = mongoose.model('Letters', letterSchema)
+module.exports = {Letters}
