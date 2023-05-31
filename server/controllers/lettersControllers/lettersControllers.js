@@ -41,8 +41,8 @@ exports.getAllLetters = async (req, res) => {
 
 exports.getLettersById = async (req, res) => {
     try {
-        const letterId = req.query.id
-        const letters = await Letters.find(letterId)
+        const {letterId} = req.params.id
+        const letters = await Letters.findById(letterId).exec()
     } catch (e) {
         res.status(500).json({error: `There was an error: ${e}`})
     }
@@ -58,7 +58,7 @@ exports.getLettersById = async (req, res) => {
 exports.createLetters = async (req, res) => {
     try {
         const {size, type, font, letters} = req.body
-        const newLetter = new Letter({size, type, font, letters})
+        const newLetter = new Letters({size, type, font, letters})
         await newLetter.save()
 
         res.status(201).json(newLetter)
@@ -85,7 +85,8 @@ exports.updateLetters = async (req, res) => {
         if(!letter){
             return res.status(404).json({ error:'Letter not found'})
         }
-
+        // These will be adjusted later to not have them hard coded as an increment
+        // as they may also be decremented
         letter.totalStock += quantity
         letter.numberAvailable += quantity
 
@@ -104,19 +105,8 @@ exports.updateLetters = async (req, res) => {
 
 exports.deleteById = async (req, res) => {
     try {
-        const {id} = req.params
-        const {quantity} = req.body
-
-        const letter = await Letters.findByIdAndDelete(id)
-
-        if(!letter){
-            res.status(404).json({error: 'Letter not found'})
-        }
-
-        res.json({message: 'Letter Successfully Deleted'})
-
-
+       
     } catch (e) {
-        res.status(500).json({e: 'Internal Server Error'})
+        
     }
 }
