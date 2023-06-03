@@ -40,8 +40,9 @@ exports.getAllLetters = async (req, res) => {
 
 exports.getLettersById = async (req, res) => {
     try {
-        const {letterId} = req.params.id
+        const letterId = req.params.id
         const letters = await Letters.findById(letterId).exec()
+        res.json(letters)
     } catch (e) {
         res.status(500).json({error: `There was an error: ${e}`})
     }
