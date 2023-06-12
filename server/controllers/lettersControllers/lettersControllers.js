@@ -5,12 +5,13 @@
  * will provide filters with queries to this route
  */
 
-const { Letters } = require("../../models/Letters.js")
-
+const {Letters} = require("../../models/Letters.js")
+console.log(Letters)
 
 exports.getAllLetters = async (req, res) => {
     try{
         const filter = {}
+        console.log(req.ip)
         
         if(req.query.size){
 
@@ -19,6 +20,10 @@ exports.getAllLetters = async (req, res) => {
 
         if(req.query.type){
             filter.type = req.query.type
+        }
+
+        if(req.query.font){
+            filter.font = req.query.font
         }
 
         const letters = await Letters.find(filter).exec()
@@ -40,9 +45,8 @@ exports.getAllLetters = async (req, res) => {
 
 exports.getLettersById = async (req, res) => {
     try {
-        const letterId = req.params.id
+        const {letterId} = req.params.id
         const letters = await Letters.findById(letterId).exec()
-        res.json(letters)
     } catch (e) {
         res.status(500).json({error: `There was an error: ${e}`})
     }
@@ -57,8 +61,8 @@ exports.getLettersById = async (req, res) => {
 
 exports.createLetters = async (req, res) => {
     try {
-        const { size, type, font, letters } = req.body
-        const newLetter = new Letters({ size, type, font, letters })
+        const {size, type, font, letters} = req.body
+        const newLetter = new Letters({size, type, font, letters})
         await newLetter.save()
 
         res.status(201).json(newLetter)
@@ -77,8 +81,8 @@ exports.createLetters = async (req, res) => {
 
 exports.updateLetters = async (req, res) => {
     try {
-        const { id } = req.params
-        const { quantity } = req.body
+        const {id} = req.params
+        const {quantity} = req.body
 
         const letter = await Letters.findById(id)
 
