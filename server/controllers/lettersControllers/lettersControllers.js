@@ -11,7 +11,7 @@ console.log(Letters)
 exports.getAllLetters = async (req, res) => {
     try{
         const filter = {}
-        console.log(req.ip)
+        
         
         if(req.query.size){
 
@@ -81,8 +81,8 @@ exports.createLetters = async (req, res) => {
 
 exports.updateLetters = async (req, res) => {
     try {
-        const {id} = req.params
-        const {quantity} = req.body
+        const { id } = req.params
+        const { quantity } = req.body
 
         const letter = await Letters.findById(id)
 
