@@ -5,12 +5,13 @@
  * will provide filters with queries to this route
  */
 
-const { Letters } = require("../../models/Letters.js")
-
+const {Letters} = require("../../models/Letters.js")
+console.log(Letters)
 
 exports.getAllLetters = async (req, res) => {
     try{
         const filter = {}
+        
         
         if(req.query.size){
 
@@ -19,6 +20,10 @@ exports.getAllLetters = async (req, res) => {
 
         if(req.query.type){
             filter.type = req.query.type
+        }
+
+        if(req.query.font){
+            filter.font = req.query.font
         }
 
         const letters = await Letters.find(filter).exec()
@@ -57,8 +62,8 @@ exports.getLettersById = async (req, res) => {
 
 exports.createLetters = async (req, res) => {
     try {
-        const { size, type, font, letters } = req.body
-        const newLetter = new Letters({ size, type, font, letters })
+        const {size, type, font, letters} = req.body
+        const newLetter = new Letters({size, type, font, letters})
         await newLetter.save()
 
         res.status(201).json(newLetter)
