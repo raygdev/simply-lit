@@ -5,13 +5,12 @@
  * will provide filters with queries to this route
  */
 
-const {Letters} = require("../../models/Letters.js")
-console.log(Letters)
+const { Letters } = require("../../models/Letters.js")
+
 
 exports.getAllLetters = async (req, res) => {
     try{
         const filter = {}
-        
         
         if(req.query.size){
 
@@ -62,8 +61,8 @@ exports.getLettersById = async (req, res) => {
 
 exports.createLetters = async (req, res) => {
     try {
-        const {size, type, font, letters} = req.body
-        const newLetter = new Letters({size, type, font, letters})
+        const { size, type, font, letters } = req.body
+        const newLetter = new Letters({ size, type, font, letters })
         await newLetter.save()
 
         res.status(201).json(newLetter)
