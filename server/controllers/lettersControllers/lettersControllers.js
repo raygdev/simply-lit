@@ -83,8 +83,20 @@ exports.createLetters = async (req, res) => {
       return;
     }
 
+    let letterError;
     const newLetter = new Letters({ size, type, font, letters })
-    await newLetter.save()
+    await newLetter.save().catch(e => {
+      console.log(e)
+      letterError = handleMongooseErrors(e)
+    })
+
+    if(letterError){
+      res.status(424).json({
+        message: "Something went wrong trying to save.",
+        letterError
+      })
+      return;
+    }
 
     res.status(201).json(newLetter)
   } catch (e) {
