@@ -86,8 +86,8 @@ exports.createLetters = async (req, res) => {
 /**
  * PUT /letters/:id
  *
- * Accepts the entire array of leters
- * Updates occur on the property in 
+ * Accepts the entire array of letters
+ * Updates occur on the property in
  * the frontend
  */
 
