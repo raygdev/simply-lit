@@ -24,7 +24,22 @@ exports.getAllLetters = async (req, res) => {
       filter.font = req.query.font
     }
 
-    const letters = await Letters.find(filter).exec()
+    let letterError;
+    const letters = await Letters
+      .find(filter)
+      .exec()
+      .catch(e => {
+        console.log(e)
+        letterError = handleMongooseErrors(e)
+      })
+
+    if(letterError){
+      res.status(400).json({
+        message: "Something went wrong when trying to find the letters",
+        letterError
+      })
+
+    }
 
     res.json(letters)
   } catch (e) {
