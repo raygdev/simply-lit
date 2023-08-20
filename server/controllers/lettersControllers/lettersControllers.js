@@ -6,6 +6,7 @@
  */
 
 const { Letters } = require("../../models/Letters.js")
+const { handleMongooseErrors } = require("./utils.js")
 
 exports.getAllLetters = async (req, res) => {
   try {
