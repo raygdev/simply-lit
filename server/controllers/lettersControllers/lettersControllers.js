@@ -42,7 +42,22 @@ exports.getAllLetters = async (req, res) => {
 exports.getLettersById = async (req, res) => {
   try {
     const letterId = req.params.id
-    const letters = await Letters.findById(letterId).exec()
+
+    let letterError
+    const letters = await Letters.findById(letterId)
+      .exec()
+      .catch(e => {
+        console.log(e)
+        letterError = handleMongooseErrors(e)
+        return null
+      })
+    if(!letters) {
+      res.status(404).json({
+        message: "Something went wrong trying to find the letters",
+        letterError
+      })
+    }
+
     res.json(letters)
   } catch (e) {
     res.status(500).json({ error: `There was an error: ${e}` })
