@@ -75,6 +75,14 @@ exports.getLettersById = async (req, res) => {
 exports.createLetters = async (req, res) => {
   try {
     const { size, type, font, letters } = req.body
+    if(!size || !type || !font){
+      res.status(422).json({
+        error: "Missing required field(s)",
+        message: "Required fields are size, type, and font"
+      })
+      return;
+    }
+
     const newLetter = new Letters({ size, type, font, letters })
     await newLetter.save()
 
