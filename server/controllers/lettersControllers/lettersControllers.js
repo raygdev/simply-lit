@@ -111,12 +111,7 @@ exports.updateLetters = async (req, res) => {
       .exec()
       .catch(e => {
         console.log(e)
-        letterError = {
-          errorName: e.name,
-          errorPath: e.path,
-          errorMessage: e.message,
-          errorReason: e.reason
-        }
+        letterError = handleMongooseErrors(e)
         return null
       })
 
@@ -131,10 +126,7 @@ exports.updateLetters = async (req, res) => {
       console.log(e)
       return res.status(400).json({
         message: "Something went wrong saving and updating the items.",
-        errorName: e.name,
-        errorMessage: e.message,
-        errorPath: e.path,
-        errorReason: e.reason
+        ...handleMongooseErrors(e)
       })
     })
     res.status(200).json({
