@@ -56,6 +56,7 @@ exports.getLettersById = async (req, res) => {
         message: "Something went wrong trying to find the letters",
         letterError
       })
+      return;
     }
 
     res.json(letters)
