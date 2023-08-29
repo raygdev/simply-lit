@@ -4,7 +4,6 @@
   "description": "Navigate from the root directory into the server\r  directory and install the dependencies",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start:client":"cd client && npm run dev",
     "start:server": "cd server && npm run dev",
     "dev": "concurrently npm:start:*"
