@@ -1,7 +1,7 @@
 {
   "name": "simply-lit",
   "version": "1.0.0",
-  "description": "Navigate from the root directory into the server\r  directory and install the dependencies",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start:client":"cd client && npm run dev",
