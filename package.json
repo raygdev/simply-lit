@@ -1,0 +1,16 @@
+{
+  "name": "simply-lit",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:client":"cd client && npm run dev",
+    "start:server": "cd server && npm run dev",
+    "dev": "concurrently npm:start:*"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.1"
+  }
+}
