@@ -4,11 +4,12 @@ import coverImg from '../assets/cover.png'
 
 export default function Header(){
     return (
-        <header>
-            <Link to='/'><img src ={coverImg} /></Link>
+        <header className="p-4 flex content-center justify-between w-full">
+            <div className="w-52">
+                <Link to='/'><img src ={coverImg} className="max-w-full" /></Link>
+            </div>
+            <nav className="nav-container flex gap-5 items-center mr-6">
 
-            <nav className="nav-container">
-                
                 <NavLink to='/'>Home</NavLink>
                 <NavLink to='/about'>About</NavLink>
                 <NavLink to='/login'>Login</NavLink>
