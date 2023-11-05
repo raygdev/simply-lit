@@ -7,10 +7,12 @@ export default function Home() {
     "text-[#e1341e] text-base font-bold  py-1 px-2 rounded transition-all uppercase duration-200 hover:drop-shadow-lg active:drop-shadow-sm hover:bg-orange-700 hover:text-white"
   return (
     <div className="w-full min-h-screen justify-between">
+      {/*
+      leave this here for now
       <div className="group">
         <SlideRightMenu />
-      </div>
-      <div className="w-full h-screen pl-[calc((50%-33%)-10%)] flex flex-col items-center justify-center">
+      </div> pl-[calc((50%-33%)-10%)]*/}
+      <div className="w-full h-screen  flex flex-col items-center justify-center">
         <div className="p-4">
           <h1 className="text-2xl font-semibold block py-4 md:text-4xl lg:text-6xl">
             Welcome to <span className="text-[#e1341e]">S</span>imply{" "}

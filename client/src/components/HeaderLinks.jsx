@@ -5,7 +5,7 @@ import { linkOptions } from "./utils/linkOptions"
 export default function HeaderLinks() {
   return (
     <nav
-      className= 'bg-inherit gap-[20px] flex justify-between items-center p-4 sticky top-0 text-[#e1341e]'
+      className= 'bg-inherit gap-[20px] flex justify-between items-center p-4 sticky top-0 text-[#fcfbfb]'
     >
         {
             linkOptions.map((link, i) => {
