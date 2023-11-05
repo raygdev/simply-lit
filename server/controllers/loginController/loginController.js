@@ -1,4 +1,4 @@
-const { User } = require("../models/User")
+const { User } = require("../../models/User")
 const bcrypt = require("bcrypt")
 const jwt = require("jsonwebtoken")
 
@@ -44,4 +44,10 @@ exports.loginController = async (req, res) => {
             message: "Something went wrong"
         })
     }
+}
+
+exports.logoutController = async (req, res) => {
+    res.clearCookie("token")
+        .status(302)
+        .redirect("http://localhost:5173/login")
 }
