@@ -24,7 +24,7 @@ exports.loginController = async (req, res) => {
             res.cookie("token", jwt.sign(user, process.env.JWT_SECRET), {
                 secure: false,
                 httpOnly: true,
-                maxAge: 1000 * 60 * 5
+                maxAge: 1000 * 60 * 60 * 8
             }). status(200).json({
                 success: true,
                 message: "User successfully logged in",
