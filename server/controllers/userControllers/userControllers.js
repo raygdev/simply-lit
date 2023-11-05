@@ -31,3 +31,25 @@ exports.createUser = async (req, res, next) => {
         })
     }
 }
+
+exports.getUserById = async (req, res) => {
+    const { id } = req.params
+    try {
+        const found =  await User.findById(id).select("-password").exec()
+        if(!found) return res.status(404).json({
+            success: false,
+            message: "Could not find that user"
+        })
+
+        res.status(200). json(found.toJSON())
+        
+    }
+    catch(e) {
+        console.log(e)
+        res.status(400).json({
+        success: false,
+        message: "Something went wrong",
+        error: e
+        })
+    }
+}
