@@ -17,9 +17,10 @@ exports.createUser = async (req, res, next) => {
         }
         const user = new User(newUser)
         await user.save()
-        console.log("new user created", user.toJSON())
-        console.log(user.id)
-        res.status(200).json(user.toJSON())
+        const modified = user.toJSON()
+        delete modified.password
+
+        res.status(200).json(modified)
     }
     catch(e) {
         console.log(e)
