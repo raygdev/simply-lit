@@ -6,9 +6,9 @@ const userSchema = new mongoose.Schema({
     role: {type: String, required: true}
 }, {
     timestamps: true,
-    toJSON: true
+    toJSON: {virtuals: true}
 })
 
-const User = mongoose.Model("Users", userSchema)
+const User = mongoose.model("Users", userSchema)
 
 module.exports = { User }
